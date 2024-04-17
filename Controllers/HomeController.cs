@@ -35,4 +35,13 @@ public class HomeController : Controller
             return View();
         }
     }
+
+
+    [HttpPost]
+    public IActionResult Create(User u)
+    {
+        _context.Users.Add(u);
+        _context.SaveChanges();
+        return View("Index");
+    }
 }

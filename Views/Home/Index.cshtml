@@ -6,7 +6,7 @@
 @{
     if( TempData["ErrorLogin"] !=null)
    {
-    <div class="alert alert-warning bordes" id="mensaje" >@TempData["ErrorLogin"]</div>
+    <div class="alert alert-danger" id="mensaje" >@TempData["ErrorLogin"]</div>
    }
 }
 <br>
@@ -33,16 +33,51 @@
     <br>
     <br>
     <h1>Register</h1>
-    br
+    <br>
     <div class="login-card">
-        <form asp-controller="Home" asp-action="Index" method="post" >
+        <form asp-controller="Home" asp-action=" Create" method="post" >
             <div class="form-group">
-                <label for="username">Document </label>
-                <input required="" name="username" id="username" type="text" asp-for="Document">
+                <label for="username">Name</label>
+                <input required="" id="username" type="text" asp-for="Name">
             </div>
             <div class="form-group">
-                <label for="password">Password </label>
-                <input required="" name="password" id="password" type="password" asp-for="Password">
+                <label for="password">LastName</label>
+                <input required="" id="password" type="text" asp-for="LastName">
+            </div>
+            <div class="form-group">
+                <label for="password">Gender</label>
+                <select asp-for="Gender">
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="password">Occupation</label>
+                <select name="" id="" asp-for="Occupation">
+                    <option value="">Student</option>
+                    <option value="">Employees</option>
+                    <option value="">Student</option>
+                    <option value="">guest</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="password">Document</label>
+                <input type="number" asp-for="Document">
+            </div>
+             <div class="form-group">
+                <label for="password">type of Document</label>
+                <select name="" id="" asp-for="Document_type">
+                    <option value="">Cedula</option>
+                    <option value="">Targeta Identidad</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" asp-for="Password">
+            </div>
+            <div class="form-group">
+                <label for="password">Img(Url)</label>
+                <input type="text" asp-for="Photo">
             </div>
             <button type="submit" class="btn btn-primary">Input</button>
         </form>

@@ -10,5 +10,6 @@ namespace SystemRiwi.Models
         public string Document { get; set; }
         public string Document_type { get; set; }
         public string Password { get; set; }
+        public string Photo { get; set; }
     }
 }

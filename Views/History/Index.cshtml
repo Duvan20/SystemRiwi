@@ -1,0 +1,71 @@
+<br>
+<br>
+
+<div class="comtainer">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card_filte">
+                <div class="cuadro_filter">
+
+                    <h1 class="text-center">Filters</h1>
+                        <form >
+                            <h3 class="text-center">Day Week</h3>
+                            <br>
+                            <select name="" id="" class="text-center" aria-placeholder="Days week" style="width: 18pc;">
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miercoles">Miercoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sabado">Sabado</option>
+                                <option value="Sabado">Sabado</option>
+                                <option value="Domingo">Domingo</option>
+                            </select>
+                            <br>
+                            <br>
+                            <br>
+                            <h3 class="text-center">Data Time</h3>
+                            <br>
+                            <input type="time" style="width: 18pc;">
+                            <br>
+                            <br>
+                            <br>
+                            
+                            <div class="" style="display: block;">
+                                <button class="btn btn-primary text-center" style="width: 18pc;">Filters</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="Cuadro_history">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="table-primary">
+                            <th scope="col">Name</th>
+                            <th scope="col">LastName</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Entry time</th>
+                            <th scope="col">Exit Time</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach(var History in Model){
+                        <tr>
+                            <th scope="row">Duvan</th>
+                            <td>Duvan</td>
+                            <td>@History.Status</td>
+                            <td>@History.EntryTime</td>
+                            <td>@History.ExitTime</td>
+                        </tr>   
+
+                    }                    
+                    </tbody>
+                </table> 
+            </div>
+
+        </div>
+    </div>
+</div>

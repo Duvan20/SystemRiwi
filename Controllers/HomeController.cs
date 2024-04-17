@@ -1,16 +1,17 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using SystemRiwi.Data;
 using SystemRiwi.Models;
 
 namespace SystemRiwi.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    public readonly SystemRiwiContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(SystemRiwiContext context)
     {
-        _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
@@ -18,14 +19,20 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+   
+    //login
+    [HttpPost]
+    public IActionResult Index(string _Document, string _password)
     {
-        return View();
-    }
+        var User_Correct = _context.Users.FirstOrDefault(p => p.Document == _Document );
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        var Password_correct = _context.Users.FirstOrDefault(p => p.Password == _password);
+
+        if( User_Correct != null && Password_correct != null){
+            return RedirectToAction("Index","Users");
+        }else{
+             TempData ["ErrorLogin"] = "Document or Password incorrect";
+            return View();
+        }
     }
 }

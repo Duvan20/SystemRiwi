@@ -7,5 +7,6 @@ namespace SystemRiwi.Models
         public DateTime? ExitTime { get; set; }
         public string Status { get; set; }
         public int User_id { get; set; }
+        public User User { get; set; }
     }
 }

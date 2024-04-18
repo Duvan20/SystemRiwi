@@ -43,8 +43,6 @@
                 <table class="table table-striped">
                     <thead>
                         <tr class="table-primary">
-                            <th scope="col">Name</th>
-                            <th scope="col">LastName</th>
                             <th scope="col">Status</th>
                             <th scope="col">Entry time</th>
                             <th scope="col">Exit Time</th>
@@ -54,8 +52,7 @@
                     <tbody>
                     @foreach(var History in Model){
                         <tr>
-                            <th scope="row">Duvan</th>
-                            <td>Duvan</td>
+        
                             <td>@History.Status</td>
                             <td>@History.EntryTime</td>
                             <td>@History.ExitTime</td>

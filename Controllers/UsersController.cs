@@ -16,6 +16,21 @@ namespace SystemRiwi.Controllers
         //Listado de todos los usuarios
         public async Task <IActionResult>Index()
         {
+            var userName = HttpContext.Request.Cookies["Name"];
+            ViewBag.Name = userName;
+
+            var userLastname = HttpContext.Request.Cookies["LastName"];
+            ViewBag.LastName = userLastname;
+
+            var userGender = HttpContext.Request.Cookies["Gender"];
+            ViewBag.Gender = userGender;
+
+            var Photo = HttpContext.Request.Cookies["img_user"];
+            ViewBag.Photo = Photo;
+
+            var userOccupation = HttpContext.Request.Cookies["Occupation"];
+            ViewBag.Occupation = userOccupation;
+
             return View(await _context.Users.ToListAsync());
         }
 

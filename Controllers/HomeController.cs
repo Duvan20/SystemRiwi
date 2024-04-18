@@ -29,6 +29,7 @@ public class HomeController : Controller
         var Password_correct = _context.Users.FirstOrDefault(p => p.Password == _password);
 
         if( User_Correct != null && Password_correct != null){
+            Response.Cookies.Append("Id",User_Correct.Id.ToString());
             return RedirectToAction("Index","Users");
         }else{
              TempData ["ErrorLogin"] = "Document or Password incorrect";

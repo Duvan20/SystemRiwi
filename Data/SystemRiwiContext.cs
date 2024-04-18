@@ -15,10 +15,22 @@ namespace SystemRiwi.Data
         public DbSet<History> History { get; set; }
 
         //login 
-      /*   public User ValidedUser(string _Document,string _password)
+        /*   public User ValidedUser(string _Document,string _password)
+          {
+              return Users.Where( u => u.Document == _Document && u.Password == _password).FirstOrDefault();;
+          } */
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            return Users.Where( u => u.Document == _Document && u.Password == _password).FirstOrDefault();;
-        } */
+            
+            modelBuilder.Entity<History>()
+            .HasOne(h => h.User)
+            .WithMany(h => h.History)
+            .HasForeignKey(h => h.Id)
+            .OnDelete(DeleteBehavior.Cascade);
+        }
+
+
 
 
 

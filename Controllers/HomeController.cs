@@ -36,12 +36,17 @@ public class HomeController : Controller
         }
     }
 
+    public ActionResult Create()
+    {
+        return View();
+    }
+
 
     [HttpPost]
-    public IActionResult Create(User u)
+    public IActionResult Register(User u)
     {
         _context.Users.Add(u);
         _context.SaveChanges();
-        return View("Index");
+        return View("Create");
     }
 }

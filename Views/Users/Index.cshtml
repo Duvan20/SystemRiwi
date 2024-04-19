@@ -1,26 +1,19 @@
-<h1>Hola soy Profile</h1>
 
-<br>
 <br>
 <br>
 <div class="card_Profle">
     <div class="text-center">
-        <img src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/e40b6ea6361a1abe28f32e7910f63b66/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" alt="" style="width: 250px;" class="borde">
+        <img src=@ViewBag.Photo alt="" style="width: 250px;" class="borde">
         <br>
         <br>
-        <h3>Name persona</h3>   
+        <h3> @ViewBag.Name @ViewBag.LastName</h3>   
     </div>
     <div class="" style="display: flex;" >
-        <h3>Gender: {F o M}</h3>    
+        <h3>Gender: @ViewBag.Gender</h3>    
     </div>
     <br>
     <div class="" style="display: flex;">
-        <h3>Status: {Active or Inactive}</h3>
-
-    </div>
-    <br>
-    <div class="" style="display: flex;">
-        <h3>Occupation: {Student, Teacher, Employees}</h3>
+        <h3>Occupation: @ViewBag.Occupation</h3>
     </div>
     <br>
     <br>

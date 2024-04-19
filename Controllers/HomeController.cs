@@ -16,7 +16,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+         ViewData["Login"] = "display:none";
         return View();
+
     }
 
    
@@ -29,15 +31,26 @@ public class HomeController : Controller
         var Password_correct = _context.Users.FirstOrDefault(p => p.Password == _password);
 
         if( User_Correct != null && Password_correct != null){
+           
+
+            Response.Cookies.Append("Id",User_Correct.Id.ToString());
+            Response.Cookies.Append("Name",User_Correct.Name.ToString());
+            Response.Cookies.Append("LastName",User_Correct.LastName.ToString());
+            Response.Cookies.Append("Gender",User_Correct.Gender.ToString());
+            Response.Cookies.Append("Occupation",User_Correct.Occupation.ToString());
+            Response.Cookies.Append("img_user",User_Correct.Photo.ToString());
+            ViewData["Occupation"]=User_Correct.Occupation;
             return RedirectToAction("Index","Users");
+
         }else{
              TempData ["ErrorLogin"] = "Document or Password incorrect";
             return View();
         }
     }
 
-    public ActionResult Create()
+    public IActionResult Create()
     {
+         ViewData["Login"] = "display:none";
         return View();
     }
 
@@ -47,6 +60,6 @@ public class HomeController : Controller
     {
         _context.Users.Add(u);
         _context.SaveChanges();
-        return View("Create");
+        return RedirectToAction("Index");
     }
 }

@@ -8,7 +8,7 @@ namespace SystemRiwi.Models
         public string Gender{ get; set; }
         public string Occupation { get; set; }
         public string Document { get; set; }
-        public string Document_type { get; set; }
+        public string document_type { get; set; }
         public string Password { get; set; }
         public string Photo { get; set; }
         public List<History>History { get; set; }

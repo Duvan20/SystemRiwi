@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/SystemRiwi.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    <header style="@ViewData["login"]">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SystemRiwi</a>
@@ -22,9 +22,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Profile</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="History" asp-action="Index">History</a>
-                        </li>
+                        @if(@ViewBag.Occupation == "Employees"){
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Users">Users </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="History" asp-action="Index">History </a>
+                            </li>
+                        }else if( @ViewBag.Occupation == "Student"){
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="History" asp-action="Index">History </a>
+                            </li>
+                        }
+                      
+                        
                     </ul>
                 </div>
             </div>

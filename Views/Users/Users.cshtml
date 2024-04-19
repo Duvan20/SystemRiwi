@@ -1,0 +1,59 @@
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card_filte">
+                <div class="cuadro_filter">
+
+                    <h1 class="text-center">Search</h1>
+                    <br>
+                    
+                        <form >
+                        
+                            <div class="search">
+                                <input placeholder="Search..." type="text" style="width: 17pc;">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="Cuadro_history">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="table-primary">
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">LastName</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Occupation</th>
+                            <th scope="col">Document</th>
+                            <th scope="col">type of Document</th>
+                            <th scope="col">Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach(var Users in Model){
+                        <tr>
+                            <td>@Users.Id</td>
+                            <td>@Users.Name</td>
+                            <td>@Users.LastName</td>
+                            <td>@Users.Gender</td>
+                            <td>@Users.Occupation</td>
+                            <td>@Users.Document</td>
+                            <td>@Users.document_type</td>
+                            <td>@Users.Password</td>
+                        </tr>   
+
+                    }                    
+                    </tbody>
+                </table> 
+            </div>
+
+        </div>
+    </div>
+</div>

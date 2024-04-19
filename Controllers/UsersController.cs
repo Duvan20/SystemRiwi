@@ -59,10 +59,10 @@ namespace SystemRiwi.Controllers
             var Search = _context.Users.AsQueryable();
 
             if(!string.IsNullOrEmpty(SearchString)){
-                Search =  Search.Where(x => x.Name.Contains(SearchString));
+                Search =  Search.Where(x => x.Name.Contains(SearchString) || x.LastName.Contains(SearchString) || x.Gender.Contains(SearchString) || x.Occupation.Contains(SearchString) || x.Document.Contains(SearchString) || x.document_type.Contains(SearchString));
 
             }
-            return View("Index",Search.ToList());
+            return View("Users",Search.ToList());
             
 
             

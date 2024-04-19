@@ -11,10 +11,10 @@
                     <h1 class="text-center">Search</h1>
                     <br>
                     
-                        <form >
+                        <form asp-action="Search" method="get">
                         
                             <div class="search">
-                                <input placeholder="Search..." type="text" style="width: 17pc;">
+                                <input placeholder="Search..." name="SearchString" type="text" style="width: 17pc;">
                                 <button type="submit">Search</button>
                             </div>
                         </form>

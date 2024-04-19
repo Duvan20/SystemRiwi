@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SystemRiwi.Data;
 using SystemRiwi.Models;
+using BCrypt.Net;
 
 namespace SystemRiwi.Controllers;
 
@@ -28,9 +29,8 @@ public class HomeController : Controller
     {
         var User_Correct = _context.Users.FirstOrDefault(p => p.Document == _Document );
 
-        var Password_correct = _context.Users.FirstOrDefault(p => p.Password == _password);
 
-        if( User_Correct != null && Password_correct != null){
+        if( User_Correct != null && BCrypt.Net.BCrypt.Verify(_password,User_Correct.Password)){
            
 
             Response.Cookies.Append("Id",User_Correct.Id.ToString());
@@ -58,6 +58,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Register(User u)
     {
+        u.Password = BCrypt.Net.BCrypt.HashPassword(u.Password);
         _context.Users.Add(u);
         _context.SaveChanges();
         return RedirectToAction("Index");

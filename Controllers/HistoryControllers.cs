@@ -31,5 +31,7 @@ namespace SystemRiwi.Controllers
             ViewBag.Occupation = userOccupation;
             return View(await _context.History.ToListAsync());
         }
+        
+        
     }
 }

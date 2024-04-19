@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Duvan\\OneDrive\\Desktop\\SystemRiwi\\SystemRiwi.csproj": {}
+    "/home/riwip5-030/Documents/SystemRiwi/SystemRiwi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Duvan\\OneDrive\\Desktop\\SystemRiwi\\SystemRiwi.csproj": {
+    "/home/riwip5-030/Documents/SystemRiwi/SystemRiwi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Duvan\\OneDrive\\Desktop\\SystemRiwi\\SystemRiwi.csproj",
+        "projectUniqueName": "/home/riwip5-030/Documents/SystemRiwi/SystemRiwi.csproj",
         "projectName": "SystemRiwi",
-        "projectPath": "C:\\Users\\Duvan\\OneDrive\\Desktop\\SystemRiwi\\SystemRiwi.csproj",
-        "packagesPath": "C:\\Users\\Duvan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Duvan\\OneDrive\\Desktop\\SystemRiwi\\obj\\",
+        "projectPath": "/home/riwip5-030/Documents/SystemRiwi/SystemRiwi.csproj",
+        "packagesPath": "/home/riwip5-030/.nuget/packages/",
+        "outputPath": "/home/riwip5-030/Documents/SystemRiwi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Duvan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/riwip5-030/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -61,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

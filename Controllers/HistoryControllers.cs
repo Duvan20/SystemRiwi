@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SystemRiwi.Data;
@@ -5,6 +6,7 @@ using SystemRiwi.Models;
 
 namespace SystemRiwi.Controllers
 {
+    [Authorize]
     public class HistoryController : Controller
     {
         public readonly SystemRiwiContext _context;

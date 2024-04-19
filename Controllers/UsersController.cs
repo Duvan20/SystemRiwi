@@ -1,9 +1,13 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SystemRiwi.Data;
 
 namespace SystemRiwi.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         public readonly SystemRiwiContext _context;
@@ -64,9 +68,11 @@ namespace SystemRiwi.Controllers
             }
             return View("Users",Search.ToList());
             
-
-            
-
+        }
+        public async Task<IActionResult> Salir(int? id)
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index","Home");
         }
 
     }

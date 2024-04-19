@@ -7,7 +7,10 @@
         <div class="col-md-4">
             <div class="card_filte">
                 <div class="cuadro_filter">
-
+                    <br>
+                    <button class="btn btn-success" style="width: 18pc;">start day</button>
+                    <br>
+                    <br>
                     <h1 class="text-center">Filters</h1>
                         <form >
                             <h3 class="text-center">Day Week</h3>
@@ -34,7 +37,7 @@
                             
                             <div class="" style="display: block;">
                                 <button class="btn btn-primary text-center" style="width: 18pc;">Filters</button>
-                            </div>sdfdsfsdf
+                            </div>
                         </form>
                 </div>
             </div>
@@ -47,20 +50,19 @@
                             <th scope="col">Status</th>
                             <th scope="col">Entry time</th>
                             <th scope="col">Exit Time</th>
-                            
-                            
-
+                            <th scope="col">Action</th>                            
                         </tr>
                     </thead>
                     <tbody>
                     @foreach(var History in Model){
                         <tr>
-        
                             <td>@History.Status</td>
                             <td>@History.EntryTime</td>
                             <td>@History.ExitTime</td>
-                        </tr>   
-
+                            <td>
+                                <button class="btn btn-danger">finish day</button>
+                            </td>
+                        </tr>  
                     }                    
                     </tbody>
                 </table> 

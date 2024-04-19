@@ -17,6 +17,9 @@ namespace SystemRiwi.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            var id_user = HttpContext.Request.Cookies["id"];
+            ViewBag.Id = id_user;
+
             var userName = HttpContext.Request.Cookies["Name"];
             ViewBag.Name = userName;
 
@@ -31,7 +34,15 @@ namespace SystemRiwi.Controllers
 
             var userOccupation = HttpContext.Request.Cookies["Occupation"];
             ViewBag.Occupation = userOccupation;
-            return View(await _context.History.ToListAsync());
+            ViewBag.History = await _context.History.ToListAsync(); 
+            return View();
         }
+        [HttpPost]
+        public IActionResult CreateHistory(History H)
+        {
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

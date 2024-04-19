@@ -1,4 +1,5 @@
 
+@model History;
 <br>
 <br>
 
@@ -8,7 +9,18 @@
             <div class="card_filte">
                 <div class="cuadro_filter">
                     <br>
-                    <button class="btn btn-success" style="width: 18pc;">start day</button>
+
+                    <form asp-controller="History" asp-action="CreateHistory" method="post">
+                        <div class="form-group" >
+                            <label for="username">id</label>
+                            <input required="" id="username" type="number" value=@ViewBag.Id asp-for="User_id">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Status</label>
+                            <input required="" id="username" type="text" value="Active" asp-for="Status">
+                        </div>
+                        <button class="btn btn-success"type="submit" style="width: 18pc;">start day</button>
+                    </form>
                     <br>
                     <br>
                     <h1 class="text-center">Filters</h1>
@@ -54,7 +66,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach(var History in Model){
+                    @foreach(var History in ViewBag.History){
                         <tr>
                             <td>@History.Status</td>
                             <td>@History.EntryTime</td>

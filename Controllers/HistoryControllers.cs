@@ -51,9 +51,6 @@ namespace SystemRiwi.Controllers
             _context.History.Add(HistoryNew);
             _context.SaveChanges();                
             return RedirectToAction("Index","History");
-            
-           
-
 
         }
 

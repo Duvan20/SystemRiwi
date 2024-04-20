@@ -37,11 +37,27 @@ namespace SystemRiwi.Controllers
             ViewBag.History = await _context.History.ToListAsync(); 
             return View();
         }
+
+
         [HttpPost]
-        public IActionResult CreateHistory(History H)
+        public IActionResult Index(History H)
         {
-            return RedirectToAction("Index");
+     
+            var id_user = HttpContext.Request.Cookies["id"];
+            var HistoryNew = new History{
+            EntryTime = DateTime.Now,
+            User_id = int.Parse(id_user)
+            };
+            _context.History.Add(HistoryNew);
+            _context.SaveChanges();                
+            return RedirectToAction("Index","History");
+            
+           
+
+
         }
+
+
 
 
     }

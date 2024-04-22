@@ -1,5 +1,5 @@
 
-
+@model History;
 <br>
 <br>
 
@@ -53,7 +53,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach(var History in Model){
+                    @foreach(var History in ViewBag.History){
                         <tr>
                             <td>@History.Status</td>
                             <td>@History.EntryTime</td>

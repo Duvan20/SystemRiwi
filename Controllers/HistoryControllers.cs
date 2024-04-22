@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SystemRiwi.Data;
@@ -5,6 +6,7 @@ using SystemRiwi.Models;
 
 namespace SystemRiwi.Controllers
 {
+    [Authorize]
     public class HistoryController : Controller
     {
         public readonly SystemRiwiContext _context;
@@ -15,6 +17,9 @@ namespace SystemRiwi.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            var id_user = HttpContext.Request.Cookies["id"];
+            ViewBag.Id = id_user;
+
             var userName = HttpContext.Request.Cookies["Name"];
             ViewBag.Name = userName;
 
@@ -29,22 +34,28 @@ namespace SystemRiwi.Controllers
 
             var userOccupation = HttpContext.Request.Cookies["Occupation"];
             ViewBag.Occupation = userOccupation;
-            return View(await _context.History.ToListAsync());
+            ViewBag.History = await _context.History.ToListAsync(); 
+            return View();
         }
 
+
         [HttpPost]
-        public IActionResult Create()
+        public IActionResult Index(History H)
         {
-            var Id = HttpContext.Request.Cookies["Id"];
-            var NewHistory = new History{
-                EntryTime = DateTime.Now,
-                User_id = int.Parse(Id)
+     
+            var id_user = HttpContext.Request.Cookies["id"];
+            var HistoryNew = new History{
+            EntryTime = DateTime.Now,
+            User_id = int.Parse(id_user)
             };
-            _context.History.Add(NewHistory);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
+            _context.History.Add(HistoryNew);
+            _context.SaveChanges();                
+            return RedirectToAction("Index","History");
+
         }
-        
-        
+
+
+
+
     }
 }

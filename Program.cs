@@ -1,6 +1,7 @@
 using SystemRiwi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +9,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-//servicio de Mysql
+//Guardian
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+.AddCookie(Options =>{
+    Options.LoginPath = "/Home/Index";
+    Options.ExpireTimeSpan = TimeSpan.FromSeconds(30);
+    Options.AccessDeniedPath = "/Home/Index"; 
+});
 
+
+//servicio de Mysql
 builder.Services.AddDbContext<SystemRiwiContext>(Options => Options.UseMySql(
     builder.Configuration.GetConnectionString("MySqlConnection"),
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));

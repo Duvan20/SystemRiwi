@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using SystemRiwi.Data;
 using SystemRiwi.Models;
 using BCrypt.Net;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace SystemRiwi.Controllers;
 
@@ -25,13 +28,12 @@ public class HomeController : Controller
    
     //login
     [HttpPost]
-    public IActionResult Index(string _Document, string _password)
+    public async Task <IActionResult> Index(string _Document, string _password)
     {
         var User_Correct = _context.Users.FirstOrDefault(p => p.Document == _Document );
 
 
         if( User_Correct != null && BCrypt.Net.BCrypt.Verify(_password,User_Correct.Password)){
-           
 
             Response.Cookies.Append("Id",User_Correct.Id.ToString());
             Response.Cookies.Append("Name",User_Correct.Name.ToString());
@@ -40,6 +42,17 @@ public class HomeController : Controller
             Response.Cookies.Append("Occupation",User_Correct.Occupation.ToString());
             Response.Cookies.Append("img_user",User_Correct.Photo.ToString());
             ViewData["Occupation"]=User_Correct.Occupation;
+            //Guardian 
+            var claims = new List<Claim>{
+                new Claim(ClaimTypes.Name,User_Correct.Name),
+                new Claim("Correo",User_Correct.Document)
+
+            };
+            var claimsIdentity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(claimsIdentity));
+
+           
+
             return RedirectToAction("Index","Users");
 
         }else{

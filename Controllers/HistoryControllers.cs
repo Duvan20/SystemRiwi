@@ -31,6 +31,19 @@ namespace SystemRiwi.Controllers
             ViewBag.Occupation = userOccupation;
             return View(await _context.History.ToListAsync());
         }
+
+        [HttpPost]
+        public IActionResult Create()
+        {
+            var Id = HttpContext.Request.Cookies["Id"];
+            var NewHistory = new History{
+                EntryTime = DateTime.Now,
+                User_id = int.Parse(Id)
+            };
+            _context.History.Add(NewHistory);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
         
         
     }

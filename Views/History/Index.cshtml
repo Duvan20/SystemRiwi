@@ -8,7 +8,9 @@
         <div class="col-md-4">
             <div class="card_filte">
                 <div class="cuadro_filter">
-
+                    <a class="btn btn-success"  style="width: 18pc;" asp-controller="History" asp-action="Create" >Start Day</a>
+                    <br>
+                    <br>
                     <h1 class="text-center">Filters</h1>
                         <form >
                             <h3 class="text-center">Day Week</h3>
@@ -48,17 +50,15 @@
                             <th scope="col">Status</th>
                             <th scope="col">Entry time</th>
                             <th scope="col">Exit Time</th>
-                            <a class="btn btn-danger" asp-controller="History" asp-action="CheckOut">Hora salida</a>
-
                         </tr>
                     </thead>
                     <tbody>
                     @foreach(var History in Model){
                         <tr>
-        
                             <td>@History.Status</td>
                             <td>@History.EntryTime</td>
                             <td>@History.ExitTime</td>
+                            <a class="btn btn-danger" asp-controller="History" asp-action="CheckOut">Exit Hour</a>
                         </tr>   
 
                     }                    

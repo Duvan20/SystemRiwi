@@ -37,10 +37,11 @@ namespace SystemRiwi.Controllers
             ViewBag.History = await _context.History.ToListAsync(); 
             return View();
         }
-        
+        [HttpPost]
         public IActionResult Create()
         {
             var id_user = HttpContext.Request.Cookies["id"];
+
             var HistoryNew = new History{
             EntryTime = DateTime.Now,
             User_id = int.Parse(id_user)
@@ -49,12 +50,13 @@ namespace SystemRiwi.Controllers
             _context.SaveChanges();                
             return RedirectToAction("Index");
         }
-
+        
         [HttpPost]
         public IActionResult CheckOut(int id)
         {
             var HistoryUpdate = new History
             {
+                Id = id,
                 ExitTime = DateTime.Now
             };
             _context.History.Update(HistoryUpdate);

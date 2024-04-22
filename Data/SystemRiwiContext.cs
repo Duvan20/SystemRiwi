@@ -26,7 +26,7 @@ namespace SystemRiwi.Data
             modelBuilder.Entity<History>()
             .HasOne(h => h.User)
             .WithMany(h => h.History)
-            .HasForeignKey(h => h.Id)
+            .HasForeignKey(h => h.User_id)
             .OnDelete(DeleteBehavior.Cascade);
         }
 

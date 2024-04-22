@@ -2,13 +2,14 @@
 @model History;
 <br>
 <br>
-
 <div class="container">
     <div class="row">
         <div class="col-md-4">
             <div class="card_filte">
                 <div class="cuadro_filter">
-                    <a class="btn btn-success"  style="width: 18pc;" asp-controller="History" asp-action="Create" >Start Day</a>
+                    <form asp-action="Create" method="post">
+                        <button class="btn btn-success" type="submit"  style="width: 18pc;">Start Day</button>
+                    </form>
                     <br>
                     <br>
                     <h1 class="text-center">Filters</h1>
@@ -50,6 +51,7 @@
                             <th scope="col">Status</th>
                             <th scope="col">Entry time</th>
                             <th scope="col">Exit Time</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,7 +60,9 @@
                             <td>@History.Status</td>
                             <td>@History.EntryTime</td>
                             <td>@History.ExitTime</td>
-                            <a class="btn btn-danger" asp-controller="History" asp-action="CheckOut">Exit Hour</a>
+                            <td>
+                                <a class="btn btn-danger" asp-controller="History" asp-action="CheckOut" method="post">Exit Hour</a>
+                            </td>
                         </tr>   
 
                     }                    

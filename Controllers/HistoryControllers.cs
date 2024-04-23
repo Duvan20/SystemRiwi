@@ -51,15 +51,14 @@ namespace SystemRiwi.Controllers
             return RedirectToAction("Index");
         }
         
-        [HttpPost]
         public IActionResult CheckOut(int id)
         {
-            var HistoryUpdate = new History
-            {
-                Id = id,
-                ExitTime = DateTime.Now
-            };
-            _context.History.Update(HistoryUpdate);
+            var test = _context.History.FirstOrDefault(x =>x.Id ==id);
+       
+            test.ExitTime = DateTime.Now;
+
+            
+            _context.History.Update(test);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
